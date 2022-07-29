@@ -6,3 +6,8 @@
     apt:
      name: git
      status: present
+
+  - name: install git
+    yum:
+     name: git
+     status: present
