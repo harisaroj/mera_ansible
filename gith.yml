@@ -1,14 +1,10 @@
 ---
-- hosts: all
+- hosts: 172.31.21.165
   become: yes
   tasks:
   - name: install wget
     apt:
-     name: wget
-     status: present
-     when: ansible_os_family== "Debian"
-  - name: install git
-    yum:
-     name: git
-     status: present
-     when: ansible_os_family== "Redhat"
+      name: wget
+      status: present
+      when: ansible_os_family== "Debian"
+  
