@@ -1,16 +1,29 @@
 ---
-- hosts: 172.31.16.63
+- hosts: all
   become: yes
   tasks:
   - name: install webserver
     yum:
       name: httpd
       state: present
+      when: ansible_os_family=="Redhat"
 
   - name: start webserver
     service:
       name: httpd
       state: started
+      when: ansible_os_family=="Redhat"
 
+  - name: install apache2
+    apt:
+     name: apache2
+     state: present
+     when: ansible_os_family=="Debian"
+
+  - name: start webserver
+    service:
+      name: apache2
+      state: started
+      when: ansible_os_family=="Debian"      
 
     
